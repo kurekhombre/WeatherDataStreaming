@@ -10,7 +10,7 @@ WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
 BASE_API_URL = "https://api.weatherapi.com/v1"
 
 
-def load_cities(filepath="cities.csv"):
+def load_cities(filepath="api/cities.csv"):
     cities = []
     with open(filepath, "r") as file:
         csv_reader = csv.DictReader(file)
