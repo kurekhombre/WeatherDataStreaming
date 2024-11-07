@@ -1,5 +1,6 @@
 import json
 import asyncio
+import os
 
 from api.endpoints.history_weather import fetch_all_history_weather
 from api.endpoints.current_weather import fetch_all_current_weather
@@ -9,10 +10,21 @@ from producers.topic_mapper import get_kafka_topic
 
 from confluent_kafka import Producer
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BOOTSTRAP_SERVER = os.getenv("BOOTSTRAP_SERVER")
+KAFKA_CONFLUENCE_API_KEY = os.getenv("KAFKA_CONFLUENCE_API_KEY")
+KAFKA_CONFLUENCE_API_SECRET = os.getenv("KAFKA_CONFLUENCE_API_SECRET")
 
 def create_kafka_producer():
     producer_config = {
-        'bootstrap.servers': 'localhost:9092'
+        'bootstrap.servers': BOOTSTRAP_SERVER,
+        'sasl.mechanisms': 'PLAIN',
+        'security.protocol': 'SASL_SSL',
+        'sasl.username': KAFKA_CONFLUENCE_API_KEY,                          
+        'sasl.password': KAFKA_CONFLUENCE_API_SECRET  
     }
     return Producer(producer_config)
 
