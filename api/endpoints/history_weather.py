@@ -20,4 +20,3 @@ async def fetch_all_history_weather(days_before=7):
         return await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
-    asyncio.run(fetch_all_history_weather())

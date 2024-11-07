@@ -20,4 +20,3 @@ async def fetch_all_forecast_weather():
         return await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
-    asyncio.run(fetch_all_forecast_weather())
