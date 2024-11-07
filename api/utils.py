@@ -12,7 +12,7 @@ BASE_API_URL = "https://api.weatherapi.com/v1"
 
 def load_cities(filepath="api/cities.csv"):
     cities = []
-    with open(filepath, "r") as file:
+    with open(filepath, "r", encoding="utf-8") as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
             cities.append({"name": row["name"], "lat": float(row["lat"]), "lon": float(row["lon"])})
