@@ -24,7 +24,7 @@ def get_api_url(endpoint, lat, lon, days_before=7, days_after=7,):
         today = date.today()
         start_dt = (today - timedelta(days=days_before)).strftime("%Y-%m-%d")
         end_dt = today.strftime("%Y-%m-%d")
-        return f'{BASE_API_URL}/history.json?q=Warsaw&dt={start_dt}&end_dt={end_dt}&key={WEATHER_API_KEY}'
+        return f'{BASE_API_URL}/history.json?q={lat},{lon}&dt={start_dt}&end_dt={end_dt}&key={WEATHER_API_KEY}'
     elif endpoint == "current":
         return f'{BASE_API_URL}/current.json?q={lat},{lon}&key={WEATHER_API_KEY}'
     elif endpoint == 'forecast':
