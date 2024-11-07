@@ -19,4 +19,4 @@ async def fetch_all_forecast_weather():
         tasks = [fetch_forecast_weather(session, city) for city in cities]
         return await asyncio.gather(*tasks)
 
-if __name__ == "__main__":
+
