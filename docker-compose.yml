@@ -21,3 +21,14 @@ services:
       - zookeeper
     ports:
       - "9092:9092"
+
+  weather_consumers:
+    build:
+      context: ./consumers
+    environment:
+      - BOOTSTRAP_SERVER=pkc-l6wr6.europe-west2.gcp.confluent.cloud:9092
+      - KAFKA_CONFLUENCE_API_KEY=${KAFKA_CONFLUENCE_API_KEY}
+      - KAFKA_CONFLUENCE_API_SECRET=${KAFKA_CONFLUENCE_API_SECRET}
+      - PYTHONPATH=/app
+    depends_on:
+      - kafka
