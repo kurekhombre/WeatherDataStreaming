@@ -1,0 +1,10 @@
+topics:
+  - name: "current_weather"
+    partitions: 3
+    replication_factor: 3
+  - name: "forecast_weather"
+    partitions: 3
+    replication_factor: 3
+  - name: "history_weather"
+    partitions: 3
+    replication_factor: 3
